@@ -1,19 +1,21 @@
 const express = require('express');
+const cors = require('cors');
 const fs = require('fs');
 const app = express();
 app.use(express.json());
+app.use(cors());
 
-const DATA_FILE = './data.json';
+const RECIPE_FILE = './recipes.json';
 
-app.get('/data', (req, res) => {
-  const data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
+app.get('/recipes', (req, res) => {
+  const data = JSON.parse(fs.readFileSync(RECIPE_FILE, 'utf8'));
   res.json(data);
 });
 
-app.post('/data', (req, res) => {
+app.post('/recipes', (req, res) => {
   const newData = req.body;
-  fs.writeFileSync(DATA_FILE, JSON.stringify(newData, null, 2), 'utf8');
-  res.status(201).send('Data saved.');
+  fs.writeFileSync(RECIPE_FILE, JSON.stringify(newData, null, 2), 'utf8');
+  res.status(201).json({ message: 'Recipe created successfully' });
 });
 
 const PORT = process.env.PORT || 3000;

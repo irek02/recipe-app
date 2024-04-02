@@ -1,0 +1,14 @@
+<ul>
+  @for (recipe of recipes(); track recipe.id) {
+    <li>{{ recipe.name }}
+      <ul>
+        @for (ingredient of recipe.ingredients; track $index) {
+          <li>{{ ingredient }}</li>
+        }
+      </ul>
+      <p>{{ recipe.instructions }}</p>
+    </li>
+  } @empty {
+    <li>There are no recipes.</li>
+  }
+</ul>
