@@ -1,6 +1,12 @@
-<div>
-  <input type="text" [ngModel]="recipeName()" (ngModelChange)="recipeName.set($event)" placeholder="Recipe Name">
-  <input type="text" [ngModel]="ingredients()" (ngModelChange)="ingredients.set($event)" placeholder="Ingredients (comma separated)">
-  <textarea [ngModel]="instructions()" (ngModelChange)="instructions.set($event)" placeholder="Instructions"></textarea>
-  <button (click)="createRecipe()">Create Recipe</button>
+<div class="container my-4">
+  <div class="mb-3">
+    <input type="text" class="form-control" [ngModel]="recipeName()" (ngModelChange)="recipeName.set($event)" placeholder="Recipe Name">
+  </div>
+  <div class="mb-3">
+    <input type="text" class="form-control" [ngModel]="ingredients()" (ngModelChange)="ingredients.set($event)" placeholder="Ingredients (comma separated)">
+  </div>
+  <div class="mb-3">
+    <textarea class="form-control" [ngModel]="instructions()" (ngModelChange)="instructions.set($event)" placeholder="Instructions"></textarea>
+  </div>
+  <button class="btn btn-primary" (click)="createRecipe()">Create Recipe</button>
 </div>

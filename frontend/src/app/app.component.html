@@ -1,9 +1,12 @@
 <main class="main">
-  <div class="content">
-
+  <div class="container mt-4">
+    <div class="mb-3">
+      <button class="btn btn-link" (click)="showCreateRecipe = !showCreateRecipe">Add Recipe</button>
+      @if (showCreateRecipe) {
+        <app-create-recipe></app-create-recipe>
+      }
+    </div>
     <app-recipes-list></app-recipes-list>
-    <app-create-recipe></app-create-recipe>
-
   </div>
 </main>
 

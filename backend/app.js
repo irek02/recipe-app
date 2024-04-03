@@ -13,8 +13,10 @@ app.get('/recipes', (req, res) => {
 });
 
 app.post('/recipes', (req, res) => {
-  const newData = req.body;
-  fs.writeFileSync(RECIPE_FILE, JSON.stringify(newData, null, 2), 'utf8');
+  const newRecipe = req.body;
+  const recipes = JSON.parse(fs.readFileSync(RECIPE_FILE, 'utf8'));
+  recipes.push(newRecipe);
+  fs.writeFileSync(RECIPE_FILE, JSON.stringify(recipes, null, 2), 'utf8');
   res.status(201).json({ message: 'Recipe created successfully' });
 });
 
