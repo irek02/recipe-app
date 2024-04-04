@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -11,6 +11,9 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './create-recipe.component.scss'
 })
 export class CreateRecipeComponent {
+
+  @Output() submitted = new EventEmitter();
+
   recipeName = signal('');
   ingredients = signal('');
   instructions = signal('');
@@ -25,6 +28,7 @@ export class CreateRecipeComponent {
     };
 
     this.http.post('http://localhost:3000/recipes', newRecipe).subscribe(() => {
+      this.submitted.emit();
       this.recipeName.set('');
       this.ingredients.set('');
       this.instructions.set('');

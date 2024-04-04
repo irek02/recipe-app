@@ -2,7 +2,6 @@
   @for (recipe of recipes(); track recipe.id) {
     <div class="col-md-4 mb-4">
       <div class="card">
-        <!-- <img src="{{ recipe.imageUrl }}" class="card-img-top" alt="{{ recipe.name }}"> -->
         <div class="card-body">
           <h5 class="card-title">{{ recipe.name }}</h5>
           <p class="card-text">{{ recipe.description }}</p>
@@ -12,6 +11,7 @@
             }
           </ul>
           <p class="card-text mt-2">{{ recipe.instructions }}</p>
+          <button class="btn btn-danger" (click)="deleteRecipe(recipe.id)">Delete</button>
         </div>
       </div>
     </div>

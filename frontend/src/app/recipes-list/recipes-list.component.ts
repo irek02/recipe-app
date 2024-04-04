@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { signal } from '@angular/core';
 
@@ -12,6 +12,8 @@ import { signal } from '@angular/core';
 export class RecipesListComponent implements OnInit {
   recipes = signal<any[]>([]);
 
+  @Output() recipeDeleted = new EventEmitter();
+
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
@@ -21,6 +23,12 @@ export class RecipesListComponent implements OnInit {
   fetchRecipes() {
     this.http.get<any[]>('http://localhost:3000/recipes').subscribe(data => {
       this.recipes.set(data);
+    });
+  }
+
+  deleteRecipe(recipeId: number) {
+    this.http.delete(`http://localhost:3000/recipes/${recipeId}`).subscribe(() => {
+      this.recipeDeleted.emit();
     });
   }
 }

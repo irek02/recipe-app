@@ -77,5 +77,21 @@
       "bar"
     ],
     "instructions": "test test"
+  },
+  {
+    "name": "irek6",
+    "ingredients": [
+      "foo",
+      "bar"
+    ],
+    "instructions": "testtest"
+  },
+  {
+    "name": "irek7",
+    "ingredients": [
+      "foo",
+      "bar"
+    ],
+    "instructions": "test"
   }
 ]

@@ -20,6 +20,20 @@ app.post('/recipes', (req, res) => {
   res.status(201).json({ message: 'Recipe created successfully' });
 });
 
+app.delete('/recipes/:id', (req, res) => {
+  const recipeId = parseInt(req.params.id);
+  let recipes = JSON.parse(fs.readFileSync(RECIPE_FILE, 'utf8'));
+
+  const recipeIndex = recipes.findIndex(recipe => recipe.id === recipeId);
+  if (recipeIndex > -1) {
+    recipes.splice(recipeIndex, 1);
+    fs.writeFileSync(RECIPE_FILE, JSON.stringify(recipes, null, 2), 'utf8');
+    res.json({ message: 'Recipe deleted successfully' });
+  } else {
+    res.status(404).json({ message: 'Recipe not found' });
+  }
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
