@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { RecipesListComponent } from './recipes-list/recipes-list.component';
-import { CreateRecipeComponent } from './create-recipe/create-recipe.component';
+import { RecipesListComponent } from './components/recipes-list/recipes-list.component';
+import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({

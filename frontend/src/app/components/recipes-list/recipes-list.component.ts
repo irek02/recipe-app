@@ -29,6 +29,7 @@ export class RecipesListComponent implements OnInit {
   deleteRecipe(recipeId: number) {
     this.http.delete(`http://localhost:3000/recipes/${recipeId}`).subscribe(() => {
       this.recipeDeleted.emit();
+      this.fetchRecipes();
     });
   }
 }

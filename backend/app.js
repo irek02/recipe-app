@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
+const { v4: uuidv4 } = require('uuid');
+
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -13,15 +15,15 @@ app.get('/recipes', (req, res) => {
 });
 
 app.post('/recipes', (req, res) => {
-  const newRecipe = req.body;
+  const newRecipe = { ...req.body, id: uuidv4() };
   const recipes = JSON.parse(fs.readFileSync(RECIPE_FILE, 'utf8'));
   recipes.push(newRecipe);
   fs.writeFileSync(RECIPE_FILE, JSON.stringify(recipes, null, 2), 'utf8');
-  res.status(201).json({ message: 'Recipe created successfully' });
+  res.status(201).json({ message: 'Recipe created successfully', id: newRecipe.id });
 });
 
 app.delete('/recipes/:id', (req, res) => {
-  const recipeId = parseInt(req.params.id);
+  const recipeId = req.params.id;
   let recipes = JSON.parse(fs.readFileSync(RECIPE_FILE, 'utf8'));
 
   const recipeIndex = recipes.findIndex(recipe => recipe.id === recipeId);
