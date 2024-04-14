@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { signal } from '@angular/core';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-recipes-list',
@@ -11,25 +12,22 @@ import { signal } from '@angular/core';
 })
 export class RecipesListComponent implements OnInit {
   recipes = signal<any[]>([]);
-
-  @Output() recipeDeleted = new EventEmitter();
+  loading = signal<boolean>(true);
 
   constructor(private http: HttpClient) {}
 
-  ngOnInit() {
-    this.fetchRecipes();
+  async ngOnInit() {
+    this.loading.set(true);
+    this.recipes.set(await this.fetchRecipes());
+    this.loading.set(false);
   }
 
   fetchRecipes() {
-    this.http.get<any[]>('http://localhost:3000/recipes').subscribe(data => {
-      this.recipes.set(data);
-    });
+    return lastValueFrom(this.http.get<any[]>('http://localhost:3000/recipes'));
   }
 
-  deleteRecipe(recipeId: number) {
-    this.http.delete(`http://localhost:3000/recipes/${recipeId}`).subscribe(() => {
-      this.recipeDeleted.emit();
-      this.fetchRecipes();
-    });
+  async deleteRecipe(recipeId: number) {
+    await lastValueFrom(this.http.delete(`http://localhost:3000/recipes/${recipeId}`));
+    this.recipes.set(await this.fetchRecipes());
   }
 }
