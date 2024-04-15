@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "name": "irek0",
+    "ingredients": [
+      "foo",
+      "bar"
+    ],
+    "instructions": "",
+    "id": "53f8e461-4ccc-47ea-a8aa-d291d968f5e4"
+  },
+  {
+    "name": "irek2",
+    "ingredients": [
+      "foo",
+      "bar"
+    ],
+    "instructions": "",
+    "id": "d8e2592d-e37e-4df1-ad5a-301281a8ddab"
+  }
+]

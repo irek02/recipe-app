@@ -24,6 +24,6 @@ export class AppComponent {
 
   recipeCreatedHandler() {
     this.showCreateRecipe = false;
-    this.recipeList.fetchRecipes();
+    this.recipeList.createRecipeEventHandler();
   }
 }

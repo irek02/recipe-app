@@ -11,19 +11,10 @@
   }
   @for (recipe of recipes(); track recipe.id) {
     <div class="col-md-4 mb-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{ recipe.name }}</h5>
-          <p class="card-text">{{ recipe.description }}</p>
-          <ul class="list-group list-group-flush">
-            @for (ingredient of recipe.ingredients; track $index) {
-              <li class="list-group-item">{{ ingredient }}</li>
-            }
-          </ul>
-          <p class="card-text mt-2">{{ recipe.instructions }}</p>
-          <button class="btn btn-danger" (click)="deleteRecipe(recipe.id)">Delete</button>
-        </div>
-      </div>
+      <app-recipes-list-item
+        [recipe]="recipe"
+        (recipeDeleted)="deleteRecipeEventHandler()">
+      </app-recipes-list-item>
     </div>
   }
 </div>
