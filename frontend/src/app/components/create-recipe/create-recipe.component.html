@@ -8,5 +8,7 @@
   <div class="mb-3">
     <textarea class="form-control" [ngModel]="instructions()" (ngModelChange)="instructions.set($event)" placeholder="Instructions"></textarea>
   </div>
-  <button class="btn btn-primary" (click)="createRecipe()">Create Recipe</button>
+  <button class="btn btn-primary" (click)="createRecipe()" [disabled]="creating()">
+    {{ creating() ? 'Creating Recipe...' : 'Create Recipe' }}
+  </button>
 </div>

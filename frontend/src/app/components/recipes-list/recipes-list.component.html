@@ -1,4 +1,11 @@
-<div class="row">
+@if (reloading()) {
+  <div class="progress-bar">
+    <div class="progress"></div>
+  </div>
+}
+
+<div class="row pt-2">
+
   @if (loading()) {
     <div class="d-flex justify-content-center">
       <div class="spinner-border" role="status">

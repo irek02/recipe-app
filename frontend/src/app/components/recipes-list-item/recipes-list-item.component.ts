@@ -14,7 +14,7 @@ export class RecipesListItemComponent {
   @Input() recipe: any;
   @Output() recipeDeleted = new EventEmitter();
 
-  deleting = signal<boolean>(false);
+  deleting = signal(false);
 
   constructor(
     private http: HttpClient,

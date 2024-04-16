@@ -15,7 +15,8 @@ import { RecipesListItemComponent } from '../recipes-list-item/recipes-list-item
 })
 export class RecipesListComponent implements OnInit {
   recipes = signal<any[]>([]);
-  loading = signal<boolean>(true);
+  loading = signal(true);
+  reloading = signal(false);
 
   constructor(
     private http: HttpClient
@@ -32,11 +33,15 @@ export class RecipesListComponent implements OnInit {
   }
 
   async deleteRecipeEventHandler() {
+    this.reloading.set(true);
     this.recipes.set(await this.getRecipes());
+    this.reloading.set(false);
   }
 
   async createRecipeEventHandler() {
+    this.reloading.set(true);
     this.recipes.set(await this.getRecipes());
+    this.reloading.set(false);
   }
 
 }
