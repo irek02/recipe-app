@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1",
+    "name": "Spaghetti Carbonara",
+    "description": "Classic Italian pasta dish with eggs, cheese, pancetta, and black pepper.",
+    "ingredients": [
+      "200g spaghetti",
+      "100g pancetta or guanciale, diced",
+      "2 large eggs",
+      "50g Pecorino Romano cheese, grated",
+      "Salt and black pepper to taste"
+    ],
+    "instructions": [
+      "Cook spaghetti in boiling salted water until al dente.",
+      "Meanwhile, fry pancetta in a pan until crispy.",
+      "In a bowl, whisk together eggs, grated cheese, and black pepper.",
+      "Drain cooked spaghetti and add to the pan with pancetta, tossing to coat.",
+      "Remove from heat and quickly stir in the egg mixture, allowing the residual heat to cook the eggs without scrambling.",
+      "Serve immediately with extra grated cheese and black pepper."
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Chicken Alfredo",
+    "description": "Creamy pasta dish with tender chicken breast, garlic, and Parmesan cheese.",
+    "ingredients": [
+      "300g fettuccine",
+      "2 boneless, skinless chicken breasts, cut into bite-sized pieces",
+      "2 cloves garlic, minced",
+      "1 cup heavy cream",
+      "1/2 cup grated Parmesan cheese",
+      "Salt and black pepper to taste"
+    ],
+    "instructions": [
+      "Cook fettuccine in boiling salted water until al dente.",
+      "In a skillet, cook chicken pieces until no longer pink, then remove from skillet.",
+      "In the same skillet, sauté minced garlic until fragrant.",
+      "Add heavy cream and bring to a simmer, then stir in grated Parmesan cheese until smooth and creamy.",
+      "Season sauce with salt and black pepper to taste.",
+      "Add cooked fettuccine and chicken back to the skillet, tossing to coat in the sauce.",
+      "Serve immediately, garnished with extra Parmesan cheese and black pepper."
+    ]
+  }
+]

@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <h1>Recipe App</h1>
+  <hr>
+  <!-- <div *ngIf="loading">Loading...</div> -->
+  <!-- <div *ngIf="recipes && !loading"> -->
+  <div>
+    <h2>Recipes</h2>
+    <ul>
+      @for (recipe of recipes; track recipe.id) {
+        <li>
+          <strong>{{ recipe.name }}</strong> - {{ recipe.description }}
+          <button (click)="deleteRecipe(recipe.id)">Delete</button>
+        </li>
+      }
+    </ul>
+    <h2>Add New Recipe</h2>
+    <form (submit)="addRecipe()">
+      <label>Name: <input type="text" [(ngModel)]="newRecipe.name" required></label><br>
+      <label>Description: <textarea [(ngModel)]="newRecipe.description" required></textarea></label><br>
+      <button type="submit">Add Recipe</button>
+    </form>
+  </div>
+</div>
