@@ -14,7 +14,7 @@ const recipesFilePath = './data/recipes.json';
 app.get('/api/recipes', (req, res) => {
     fs.readFile(recipesFilePath, (err, data) => {
         if (err) {
-            res.status(500).send(err);
+            res.status(500).json(err);
             return;
         }
         res.json(JSON.parse(data));
@@ -26,17 +26,17 @@ app.post('/api/recipes', (req, res) => {
     const newRecipe = req.body;
     fs.readFile(recipesFilePath, (err, data) => {
         if (err) {
-            res.status(500).send(err);
+            res.status(500).json(err);
             return;
         }
         const recipes = JSON.parse(data);
         recipes.push(newRecipe);
         fs.writeFile(recipesFilePath, JSON.stringify(recipes, null, 2), (err) => {
             if (err) {
-                res.status(500).send(err);
+                res.status(500).json(err);
                 return;
             }
-            res.status(201).send('Recipe added successfully');
+            res.status(201).json('Recipe added successfully');
         });
     });
 });
@@ -46,17 +46,17 @@ app.delete('/api/recipes/:id', (req, res) => {
     const id = req.params.id;
     fs.readFile(recipesFilePath, (err, data) => {
         if (err) {
-            res.status(500).send(err);
+            res.status(500).json(err);
             return;
         }
         let recipes = JSON.parse(data);
         recipes = recipes.filter(recipe => recipe.id !== id);
         fs.writeFile(recipesFilePath, JSON.stringify(recipes, null, 2), (err) => {
             if (err) {
-                res.status(500).send(err);
+                res.status(500).json(err);
                 return;
             }
-            res.status(200).send('Recipe deleted successfully');
+            res.status(200).json('Recipe deleted successfully');
         });
     });
 });

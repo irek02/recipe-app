@@ -1,23 +1,36 @@
 <div class="container mt-5">
-  <h1>Recipe App</h1>
   <hr>
   <!-- <div *ngIf="loading">Loading...</div> -->
   <!-- <div *ngIf="recipes && !loading"> -->
   <div>
-    <h2>Recipes</h2>
-    <ul>
+    <div class="row">
       @for (recipe of recipes; track recipe.id) {
-        <li>
-          <strong>{{ recipe.name }}</strong> - {{ recipe.description }}
-          <button (click)="deleteRecipe(recipe.id)">Delete</button>
-        </li>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ recipe.name }}</h5>
+              <p class="card-text">{{ recipe.description }}</p>
+              <button class="btn btn-danger" (click)="deleteRecipe(recipe.id)">Delete</button>
+            </div>
+          </div>
+        </div>
       }
-    </ul>
-    <h2>Add New Recipe</h2>
-    <form (submit)="addRecipe()">
-      <label>Name: <input type="text" [(ngModel)]="newRecipe.name" required></label><br>
-      <label>Description: <textarea [(ngModel)]="newRecipe.description" required></textarea></label><br>
-      <button type="submit">Add Recipe</button>
-    </form>
+    </div>
+
+    <div class="container mt-5">
+      <h2>Add New Recipe</h2>
+      <div>
+        <div class="mb-3">
+          <label for="recipeName" class="form-label">Name:</label>
+          <input type="text" class="form-control" id="recipeName" [(ngModel)]="newRecipe.name" name="recipeName" required>
+        </div>
+        <div class="mb-3">
+          <label for="recipeDescription" class="form-label">Description:</label>
+          <textarea class="form-control" id="recipeDescription" [(ngModel)]="newRecipe.description" name="recipeDescription" required></textarea>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="addRecipe()">Add Recipe</button>
+      </div>
+    </div>
+
   </div>
 </div>
