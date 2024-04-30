@@ -2,6 +2,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +36,14 @@ export class AppComponent {
   }
 
   addRecipe() {
-    this.http.post('http://localhost:3000/api/recipes', this.newRecipe).subscribe(
+
+    const recipe = {
+      id: uuidv4(),
+      name: this.newRecipe.name,
+      description: this.newRecipe.description,
+    };
+
+    this.http.post('http://localhost:3000/api/recipes', recipe).subscribe(
       () => {
         console.log('Recipe added successfully');
         this.newRecipe = { name: '', description: '' };

@@ -3,30 +3,5 @@
     "id": "1",
     "name": "Spaghetti Carbonara",
     "description": "Classic Italian pasta dish with eggs, cheese, pancetta, and black pepper."
-  },
-  {
-    "id": "2",
-    "name": "Chicken Alfredo",
-    "description": "Creamy pasta dish with tender chicken breast, garlic, and Parmesan cheese."
-  },
-  {
-    "name": "test",
-    "description": "foobar"
-  },
-  {
-    "name": "test",
-    "description": "foobar"
-  },
-  {
-    "name": "test",
-    "description": "foobar"
-  },
-  {
-    "name": "test2",
-    "description": "skdfjdslkjf"
-  },
-  {
-    "name": "test3",
-    "description": "foasfkdjsfods"
   }
 ]
