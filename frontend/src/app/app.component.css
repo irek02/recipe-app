@@ -1,0 +1,8 @@
+.progress-animation {
+  animation: animateProgress 2s linear infinite;
+}
+
+@keyframes animateProgress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}

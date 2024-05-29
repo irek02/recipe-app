@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{ recipe.name }}</h5>
+    <p class="card-text">{{ recipe.description }}</p>
+    <button type="button" class="btn btn-danger" [disabled]="deleteLoading" (click)="deleteRecipe(recipe.id)">
+      @if (!deleteLoading) {
+        <span>Delete</span>
+      } @else {
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      }
+    </button>
+  </div>
+</div>
